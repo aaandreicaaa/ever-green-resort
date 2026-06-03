@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ro" data-hero="cinematic" data-pulse="on" data-grain="on">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ever Green Resort — Refugiul tău privat în natură</title>
+<meta name="description" content="Vile private cu piscină caldă, saună, ciubăr și terasă cu priveliște. Evadarea premium în Regiunea de Vile - Chetrosu. Rezervă pe WhatsApp." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+<template id="__bundler_thumbnail">
+  <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#14241c;">
+    <svg viewBox="0 0 100 100" width="40%" height="40%" fill="none" stroke="#faf8f2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M50 18 22 78h56L50 18Z"/>
+      <path d="M50 18v60M34 60h32"/>
+    </svg>
+  </div>
+</template>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Ever Green Resort">
+    <image-slot class="nav__logo" id="logo-mark" shape="rect" fit="contain" src="images/logo.webp" placeholder="Logo"></image-slot>
+    <span class="nav__name">Ever&nbsp;Green</span>
+  </a>
+  <div class="nav__links">
+    <a class="nav__link" href="#servicii">Servicii</a>
+    <a class="nav__link" href="#incluse">Facilități</a>
+    <a class="nav__link" href="#galerie">Galerie</a>
+    <a class="nav__link" href="#poveste">Poveste</a>
+    <a class="nav__link" href="#locatie">Locație</a>
+  </div>
+  <div class="nav__actions">
+    <a data-wa href="#" class="btn btn--light btn--sm">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+      Rezervă
+    </a>
+    <button class="nav__burger" id="burger" aria-label="Meniu" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu__links">
+    <a href="#servicii" data-mm>Servicii</a>
+    <a href="#incluse" data-mm>Facilități</a>
+    <a href="#galerie" data-mm>Galerie</a>
+    <a href="#poveste" data-mm>Poveste</a>
+    <a href="#locatie" data-mm>Locație</a>
+  </nav>
+  <a data-wa href="#" class="btn btn--wa btn--lg mobile-menu__cta">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+    Rezervă pe WhatsApp
+  </a>
+</div>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+
+  <!-- VARIANT A · Cinematic -->
+  <section class="hero-variant hero--cinematic" data-screen-label="Hero">
+    <div class="media">
+      <image-slot id="hero-cinematic" shape="rect" fit="cover" src="images/hero-terasa.png" placeholder="Trage aici fotografia panoramică a resortului"></image-slot>
+      <div class="media__scrim"></div>
+    </div>
+    <div class="hero__inner">
+      <p class="eyebrow hero__eyebrow reveal">Chetrosu · Refugiu privat</p>
+      <h1 class="display hero__title reveal d1">Ever Green Resort</h1>
+      <p class="hero__sub reveal d1" style="opacity: 1; width: 501px">Vile private cu piscină caldă, saună și ciubăr cu aburi — intimitate desăvârșită, sub cerul liber.</p>
+      <div class="hero__cta reveal d2">
+        <a data-wa href="#" class="btn btn--wa btn--lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+          Rezervă acum pe WhatsApp
+        </a>
+        <a href="#servicii" class="btn btn--glass btn--lg">Descoperă resortul</a>
+      </div>
+    </div>
+    <div class="hero__scroll"><span>Scroll</span><i></i></div>
+  </section>
+
+  <!-- VARIANT B · Editorial split -->
+  <section class="hero-variant hero--editorial" data-screen-label="Hero">
+    <div class="hero__col">
+      <p class="eyebrow hero__eyebrow reveal">Chetrosu · Refugiu privat</p>
+      <h1 class="display hero__title reveal d1">Ever Green Resort</h1>
+      <p class="hero__sub reveal d1">Vile private cu piscină caldă, saună și ciubăr. Un loc unde timpul încetinește.</p>
+      <div class="hero__cta reveal d2">
+        <a data-wa href="#" class="btn btn--wa btn--lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+          Rezervă pe WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="media">
+      <image-slot id="hero-editorial" shape="rect" fit="cover" src="images/hero-editorial.webp" placeholder="Trage aici fotografia vilei"></image-slot>
+      <div class="media__scrim"></div>
+      <div class="media__cap"><b>A-frame</b><span>Vilă privată · cu saună</span></div>
+    </div>
+  </section>
+
+  <!-- VARIANT C · Framed -->
+  <section class="hero-variant hero--frame" data-screen-label="Hero">
+    <div class="hero__media-wrap">
+      <div class="media">
+        <image-slot id="hero-frame" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1080&fit=crop&q=80&auto=format" placeholder="Trage aici fotografia panoramică"></image-slot>
+        <div class="media__scrim"></div>
+      </div>
+      <div class="hero__card">
+        <p class="eyebrow hero__eyebrow reveal">Chetrosu · Refugiu privat</p>
+        <h1 class="display hero__title reveal d1">Ever Green Resort</h1>
+        <p class="hero__sub reveal d2">Evadarea premium pe care o meriți — la doar un mesaj distanță.</p>
+        <div class="hero__cta reveal d3" style="margin-top:30px">
+          <a data-wa href="#" class="btn btn--wa btn--lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+            Rezervă acum pe WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</header>
+
+<!-- ============ STATEMENT ============ -->
+<section class="section section--warm" data-screen-label="Intro">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="margin-bottom:20px">Ever Green · Chetrosu</p>
+    <h2 class="section-title reveal d1" style="max-width:20ch;font-size:clamp(1.9rem,3.6vw,3.1rem)">
+      Un refugiu privat în inima naturii, gândit pentru liniște.
+    </h2>
+    <div class="reveal d1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,56px);margin-top:clamp(44px,6vw,80px);border-top:1px solid var(--line);padding-top:clamp(28px,4vw,48px)">
+      <div>
+        <p class="display" style="font-size:clamp(2.8rem,5vw,4.2rem);color:var(--ink);line-height:1">4</p>
+        <p style="color:var(--muted);margin-top:10px;max-width:22ch">vile private, fiecare cu propria intimitate</p>
+      </div>
+      <div>
+        <p class="display" style="font-size:clamp(2.8rem,5vw,4.2rem);color:var(--ink);line-height:1">29°</p>
+        <p style="color:var(--muted);margin-top:10px;max-width:22ch">apa caldă în piscină, plus saună și ciubăr</p>
+      </div>
+      <div>
+        <p class="display" style="font-size:clamp(2.8rem,5vw,4.2rem);color:var(--ink);line-height:1">0</p>
+        <p style="color:var(--muted);margin-top:10px;max-width:22ch">zgomot — doar pădurea și liniștea</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES (Palmaria sticky-stack) ============ -->
+<section class="amen" id="servicii" data-screen-label="Servicii">
+  <div class="amen__grid">
+    <div class="amen__left">
+      <p class="eyebrow">Serviciile noastre</p>
+      <h2 class="section-title amen__h">Tot ce ai nevoie pentru o evadare desăvârșită</h2>
+      <p class="amen__desc" id="amenDesc">Arhitectură din lemn natural, cu saună privată și ferestre mari către pădure.</p>
+      <div class="amen__count"><span id="amenNum">01</span><i></i><span>04</span></div>
+    </div>
+
+    <div class="amen__stack">
+      <article class="amen__panel" data-num="01" data-desc="Arhitectură din lemn natural, cu saună privată și ferestre mari către pădure.">
+        <image-slot id="svc1" shape="rect" fit="cover" src="images/svc1.webp" placeholder="Vila A-frame"></image-slot>
+        <div class="amen__pscrim"></div>
+        <div class="amen__cap"><span class="amen__capnum">01</span><h3>Vilă privată cu saună</h3><p>Arhitectură din lemn natural, cu saună privată și ferestre mari către pădure.</p></div>
+      </article>
+
+      <article class="amen__panel" data-num="02" data-desc="Apă la 29°C și șezlonguri pe terasă — relaxare totală sub cerul liber.">
+        <image-slot id="svc2" shape="rect" fit="cover" src="images/svc2.webp" placeholder="Piscina caldă"></image-slot>
+        <div class="amen__pscrim"></div>
+        <div class="amen__cap"><span class="amen__capnum">02</span><h3>Piscină cu apă caldă</h3><p>Apă la 29°C și șezlonguri pe terasă — relaxare totală sub cerul liber.</p></div>
+      </article>
+
+      <article class="amen__panel" data-num="03" data-desc="Aburi calzi sub stele, cu un pahar de vin în mână. Momentul perfect de seară.">
+        <image-slot id="svc3" shape="rect" fit="cover" src="images/svc3.webp" placeholder="Ciubărul"></image-slot>
+        <div class="amen__pscrim"></div>
+        <div class="amen__cap"><span class="amen__capnum">03</span><h3>Ciubăr în aer liber</h3><p>Aburi calzi sub stele, cu un pahar de vin în mână. Momentul perfect de seară.</p></div>
+      </article>
+
+      <article class="amen__panel" data-num="04" data-desc="Terasă cozy cu priveliște superbă — petreceri private și seri memorabile.">
+        <image-slot id="svc4" shape="rect" fit="cover" src="images/svc4.webp" placeholder="Terasă / evenimente"></image-slot>
+        <div class="amen__pscrim"></div>
+        <div class="amen__cap"><span class="amen__capnum">04</span><h3>Terasă &amp; evenimente</h3><p>Terasă cozy cu priveliște superbă — petreceri private și seri memorabile.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCLUSE ============ -->
+<section class="section section--warm" id="incluse" data-screen-label="Facilități">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <p class="eyebrow reveal">Facilități &amp; confort</p>
+        <h2 class="section-title reveal d1">Totul este inclus în șederea ta</h2>
+      </div>
+      <p class="reveal d2">Nu trebuie să te gândești la nimic. De la piscina caldă și saună, până la halate, papuci și cafea — fiecare detaliu e pregătit pentru o evadare fără griji.</p>
+    </div>
+
+    <div class="incl-grid">
+      <div class="reveal">
+        <div class="incl-col__head"><h3>Facilități incluse</h3><span class="n">01</span></div>
+        <ul class="feat">
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Piscină cu apă caldă, <b>29°C</b></span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Șezlonguri</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Saună — acces gratuit</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Ciubăr cu apă fierbinte</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Terasă cozy cu priveliște superbă</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Două grătare + ace, plasă și lemne</span></li>
+        </ul>
+      </div>
+      <div class="reveal d1">
+        <div class="incl-col__head"><h3>Confort premium</h3><span class="n">02</span></div>
+        <ul class="feat">
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Halate, prosoape și papuci</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Căciuli pentru saună</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Produse de igienă personală</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Uscător de păr (feon)</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Bucătărie complet utilată</span></li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 12.5l5 5L20 6"/></svg><span>Cafea inclusă</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="program reveal">
+      <div class="program__lab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <span class="eyebrow eyebrow--light">Program</span>
+      </div>
+      <div class="program__cell"><small>Check-in</small><p class="t">14:00</p></div>
+      <div class="program__cell"><small>Check-out</small><p class="t">10:00 <em>nu mai târziu</em></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section section--paper" id="galerie" data-screen-label="Galerie">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <p class="eyebrow reveal">Galerie foto</p>
+        <h2 class="section-title reveal d1">Un strop din ce te așteaptă</h2>
+      </div>
+      <p class="reveal d2">Trage fotografiile reale în fiecare cadru — se salvează automat și apar în pagină.</p>
+    </div>
+
+    <div class="gal">
+      <figure class="g-tall"><div class="gal__m"><image-slot id="g1" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1741316041551-ed5d92b2f14f?w=900&h=1200&fit=crop&q=80&auto=format" placeholder="Piscina caldă"></image-slot></div><figcaption>Piscina cu apă caldă</figcaption></figure>
+      <figure class="g-sq"><div class="gal__m"><image-slot id="g2" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=600&fit=crop&q=80&auto=format" placeholder="Ciubărul"></image-slot></div><figcaption>Ciubăr în aer liber</figcaption></figure>
+      <figure class="g-sq"><div class="gal__m"><image-slot id="g3" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop&q=80&auto=format" placeholder="Interiorul vilei"></image-slot></div><figcaption>Interiorul vilei</figcaption></figure>
+      <figure class="g-wide"><div class="gal__m"><image-slot id="g4" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=1600&h=700&fit=crop&q=80&auto=format" placeholder="Terasa la apus"></image-slot></div><figcaption>Terasa la apus</figcaption></figure>
+      <figure class="g-sq"><div class="gal__m"><image-slot id="g5" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&h=600&fit=crop&q=80&auto=format" placeholder="Sauna privată"></image-slot></div><figcaption>Sauna privată</figcaption></figure>
+      <figure class="g-sq"><div class="gal__m"><image-slot id="g6" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&h=600&fit=crop&q=80&auto=format" placeholder="Resortul noaptea"></image-slot></div><figcaption>Resortul noaptea</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="section section--ink" id="poveste" data-screen-label="Poveste">
+  <div class="story">
+      <div class="media reveal">
+        <image-slot id="story-img" shape="rect" fit="cover" src="images/story-img.webp" placeholder="Trage o fotografie cu atmosfera resortului"></image-slot>
+      </div>
+      <div class="reveal d1 story__body">
+        <p class="eyebrow eyebrow--light">Povestea noastră</p>
+        <h2 class="section-title" style="margin-top:14px">Un loc născut din dorința de a respira din nou</h2>
+        <div style="margin-top:24px;color:var(--on-dark);font-size:1.08rem;line-height:1.65">
+          <p>Ever Green Resort s-a născut dintr-o idee simplă: să creăm un refugiu unde oamenii se pot reconecta — cu natura, cu cei dragi și cu ei înșiși.</p>
+          <p>Fiecare vilă este gândită în jurul liniștii: lemn natural, lumină caldă și ferestre care aduc pădurea înăuntru. Iar la final de zi, ciubărul cu aburi și piscina caldă transformă seara într-un ritual.</p>
+        </div>
+        <p class="display story__q">„Liniștea este<br />cel mai mare lux.”</p>
+      </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="section section--paper" id="locatie" data-screen-label="Locație">
+  <div class="wrap">
+    <div class="loc">
+      <div class="reveal">
+        <p class="eyebrow">Unde ne găsești</p>
+        <h2 class="section-title" style="margin-top:14px">Te așteptăm în Regiunea de Vile — Chetrosu</h2>
+        <p class="lead" style="margin-top:20px;max-width:42ch">La o scurtă plimbare cu mașina de oraș, dar destul de departe încât să auzi doar pădurea. Scrie-ne pe WhatsApp și îți trimitem locația exactă și disponibilitatea.</p>
+        <div class="loc__rows">
+          <div class="loc__row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div><b>Regiunea de Vile</b><span>Chetrosu · refugiu privat în mijlocul naturii</span></div>
+          </div>
+          <div class="loc__row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <div><b>+373 6833 3032</b><span>Rezervări rapide pe WhatsApp</span></div>
+          </div>
+        </div>
+        <a data-wa href="#" class="btn btn--wa btn--lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+          Cere locația pe WhatsApp
+        </a>
+      </div>
+      <div class="loc__map media reveal d1">
+        <iframe title="Harta Ever Green Resort — Chetrosu" src="https://maps.google.com/maps?q=Chetrosu%2C%20Anenii%20Noi&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot" data-screen-label="Footer">
+  <div class="foot__photo">
+    <image-slot id="foot-img" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=1000&fit=crop&q=80&auto=format" placeholder="Trage o fotografie de fundal pentru footer"></image-slot>
+  </div>
+  <div class="foot__card wrap">
+    <div class="foot__top">
+      <div>
+        <image-slot class="foot__logo" id="foot-logo" shape="rect" fit="contain" src="images/logo.webp" placeholder="Logo"></image-slot>
+        <h2 class="display foot__statement" style="line-height: 1.1">Rezervă-ți<br />evadarea</h2>
+        <p class="foot__sub">Vile private cu piscină caldă, saună și ciubăr — în mijlocul naturii la Chetrosu.</p>
+        <a data-wa href="#" class="btn btn--ink btn--lg" style="margin-top:28px">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+          Rezervă pe WhatsApp
+        </a>
+      </div>
+      <div class="foot__cols">
+        <div>
+          <h4>Resort</h4>
+          <a href="#servicii">Servicii</a>
+          <a href="#incluse">Facilități</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#poveste">Poveste</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a data-wa href="#">WhatsApp</a>
+          <a href="#locatie">Locație</a>
+          <a data-wa href="#">+373 6833 3032</a>
+          <div class="foot__social">
+            <a data-wa href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.68-6.13A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.68-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.44 1.59 5.45 0 9.89-4.43 9.9-9.88a9.85 9.85 0 0 0-2.9-7A9.81 9.81 0 0 0 12.06 2c-5.46 0-9.9 4.43-9.9 9.9 0 2.07.61 3.63 1.65 5.26l-.99 3.62 3.78-.65zM18 14.7c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <p>© 2026 Ever Green Resort. Toate drepturile rezervate.</p>
+      <div class="foot__legal">
+        <a href="#">Confidențialitate</a>
+        <a href="#">Termeni</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="tweaks-root"></div>
+
+<!-- Scripts -->
+<script src="js/image-slot.js"></script>
+<script src="js/app.js"></script>
+
+<!-- React + Tweaks -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="js/tweaks-panel.jsx"></script>
+<script type="text/babel" src="js/tweaks-app.jsx"></script>
+
+</body>
+</html>
