@@ -511,6 +511,120 @@ image-slot::part(placeholder) { font-family: "Hanken Grotesk", sans-serif; font-
 .twk-panel { border-radius: 0 !important; }
 
 /* =========================================================================
+   HERO ENTRANCE — triggered by html.hero-ready after loader dismisses
+   ========================================================================= */
+
+/* Base hidden state */
+.h-enter { opacity: 0; transform: translateY(36px); }
+.hero__title.h-enter { transform: translateY(52px); }
+
+/* Staggered reveal when hero-ready is set */
+html.hero-ready .h-enter {
+  animation: hEnter 0.9s var(--ease-2) both;
+}
+html.hero-ready .h-enter[data-hi="0"] { animation-delay: 0s; }
+html.hero-ready .h-enter[data-hi="1"] { animation-delay: 0.14s; }
+html.hero-ready .h-enter[data-hi="2"] { animation-delay: 0.3s; }
+html.hero-ready .h-enter[data-hi="3"] { animation-delay: 0.48s; }
+
+@keyframes hEnter {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Title gets a stronger lift */
+html.hero-ready .hero__title.h-enter {
+  animation-name: hTitle;
+  animation-duration: 1s;
+}
+@keyframes hTitle {
+  from { opacity: 0; transform: translateY(52px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Scroll indicator */
+html.anim-ready .hero__scroll { opacity: 0; }
+html.hero-ready .hero__scroll { animation: hFade 0.6s var(--ease) 0.9s forwards; }
+@keyframes hFade { to { opacity: 1; } }
+
+/* Ken Burns on cinematic hero background */
+html.anim-ready .hero__bg image-slot,
+html.anim-ready .hero__bg img { transform: none; transition: none; }
+html.anim-ready .hero__bg.in image-slot,
+html.anim-ready .hero__bg.in img { transform: none; }
+
+html.hero-ready .hero__bg image-slot,
+html.hero-ready .hero__bg img {
+  animation: kenBurns 10s cubic-bezier(0.22, 0.1, 0.36, 1) both;
+}
+@keyframes kenBurns {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+/* Scrim deepens after loader */
+html.hero-ready .hero--cinematic .media__scrim {
+  animation: scrimIn 1.8s var(--ease) both;
+}
+@keyframes scrimIn {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .h-enter { opacity: 1 !important; transform: none !important; animation: none !important; }
+  html.anim-ready .hero__scroll { opacity: 1; }
+  html.hero-ready .hero__bg image-slot,
+  html.hero-ready .hero__bg img { animation: none; }
+}
+
+/* =========================================================================
+   PAGE LOADER
+   ========================================================================= */
+#loader {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+#loader.is-done {
+  opacity: 0; pointer-events: none; transform: translateY(-10px);
+}
+.loader__inner {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  animation: ldrIn 0.6s var(--ease) both;
+}
+@keyframes ldrIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.loader__mark path {
+  stroke-dasharray: 300; stroke-dashoffset: 300;
+}
+.loader__mark path:first-child { animation: ldrDraw 1s var(--ease) 0.15s forwards; }
+.loader__mark path:last-child  { animation: ldrDraw 0.65s var(--ease) 0.8s forwards; }
+@keyframes ldrDraw { to { stroke-dashoffset: 0; } }
+
+.loader__name {
+  font-family: "Anton", sans-serif; text-transform: uppercase;
+  font-size: 1.35rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.88);
+  opacity: 0; transform: translateY(6px);
+  animation: ldrName 0.55s var(--ease) 0.55s forwards;
+}
+@keyframes ldrName { to { opacity: 1; transform: none; } }
+
+.loader__bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.loader__bar span {
+  display: block; height: 100%; width: 0;
+  background: rgba(255,255,255,0.45);
+  animation: ldrBar 1.7s var(--ease) forwards;
+}
+@keyframes ldrBar { to { width: 100%; } }
+
+/* =========================================================================
    RESPONSIVE
    ========================================================================= */
 @media (max-width: 1000px) {

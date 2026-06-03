@@ -1,4 +1,34 @@
 /* EVER GREEN RESORT — interactions */
+
+/* ---- Page loader ---- */
+(function () {
+  var loader = document.getElementById("loader");
+  var root = document.documentElement;
+
+  function heroReady() { root.classList.add("hero-ready"); }
+
+  if (!loader) { heroReady(); return; }
+
+  var MIN = 1700;
+  var start = Date.now();
+  var done = false;
+
+  function dismiss() {
+    if (done) return;
+    done = true;
+    var delay = Math.max(0, MIN - (Date.now() - start));
+    setTimeout(function () {
+      loader.classList.add("is-done");
+      heroReady();
+      setTimeout(function () { loader.remove(); }, 750);
+    }, delay);
+  }
+
+  if (document.readyState === "complete") { dismiss(); }
+  else { window.addEventListener("load", dismiss); }
+  setTimeout(dismiss, 5000);
+})();
+
 (function () {
   "use strict";
 
@@ -44,7 +74,7 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // collect every animatable node
-  var nodes = [].slice.call(document.querySelectorAll(".reveal, .mask, .media, .svc, .gal figure"));
+  var nodes = [].slice.call(document.querySelectorAll(".reveal, .mask, .media:not(.hero__bg), .svc, .gal figure"));
 
   if (reduce) { root.classList.add("anim-ready"); nodes.forEach(function (n) { n.classList.add("in"); }); return; }
 
