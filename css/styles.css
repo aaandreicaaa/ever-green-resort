@@ -644,7 +644,7 @@ html.hero-ready .hero--cinematic .media__scrim {
   .program__lab { border-right: none; border-bottom: 1px solid var(--line-dark); }
   .program__cell + .program__cell { border-left: none; border-top: 1px solid var(--line-dark); }
   .story { grid-template-columns: 1fr; min-height: 0; }
-  .story .media { order: -1; aspect-ratio: 4/3; min-height: 0; }
+  .story .media { order: -1; height: clamp(220px, 75vw, 440px); min-height: 0; }
   .story__body { padding: clamp(40px,8vw,64px) var(--gut); }
   .loc { grid-template-columns: 1fr; }
   .foot__top { grid-template-columns: 1fr; }
