@@ -458,24 +458,24 @@ html[data-pulse="on"] .fab__btn { animation: waPulse 2.6s infinite; }
    Fail-safe: fără JS = totul vizibil.
    ========================================================================= */
 
-/* ---- Reveal de bază: fade + lift mai pronunțat + hint scale ---- */
+/* ---- Reveal de bază: fade + lift discret (fără scale pe elemente inline) ---- */
 .anim-ready .reveal {
   opacity: 0;
-  transform: translateY(60px) scale(0.97);
-  transition: opacity 0.85s var(--ease), transform 0.95s var(--ease);
+  transform: translateY(24px);
+  transition: opacity 0.75s var(--ease), transform 0.85s var(--ease);
 }
 .anim-ready .reveal.in { opacity: 1; transform: none; }
 
-/* Section titles: mișcare mai amplă + easing elastic */
+/* Section titles: easing elastic, deplasare puțin mai mare dar fără scale */
 .anim-ready .section-title.reveal {
-  transform: translateY(64px) scale(0.96);
-  transition: opacity 0.9s var(--ease-2), transform 1.05s var(--ease-2);
+  transform: translateY(32px);
+  transition: opacity 0.85s var(--ease-2), transform 1s var(--ease-2);
 }
 
-/* Delay stagger */
-.reveal.d1 { transition-delay: 0.1s; }
-.reveal.d2 { transition-delay: 0.2s; }
-.reveal.d3 { transition-delay: 0.3s; }
+/* Delay stagger — mai scurt ca să nu se vadă goluri */
+.reveal.d1 { transition-delay: 0.07s; }
+.reveal.d2 { transition-delay: 0.15s; }
+.reveal.d3 { transition-delay: 0.23s; }
 
 /* ---- Imagini: scale + blur clear (efect cinematic) ---- */
 .anim-ready .media image-slot,
@@ -500,8 +500,8 @@ html[data-pulse="on"] .fab__btn { animation: waPulse 2.6s infinite; }
 /* ---- Galerie: fade + lift + scale, staggered ---- */
 .anim-ready .gal figure {
   opacity: 0;
-  transform: translateY(52px) scale(0.93);
-  transition: opacity 0.8s var(--ease), transform 0.9s var(--ease);
+  transform: translateY(32px);
+  transition: opacity 0.75s var(--ease), transform 0.85s var(--ease);
 }
 .anim-ready .gal figure.in { opacity: 1; transform: none; }
 .anim-ready .gal figure:nth-child(2) { transition-delay: 0.08s; }
@@ -513,7 +513,7 @@ html[data-pulse="on"] .fab__btn { animation: waPulse 2.6s infinite; }
 /* ---- Facilități: slide din stânga, staggered ---- */
 .anim-ready .feat li {
   opacity: 0;
-  transform: translateX(-36px);
+  transform: translateX(-22px);
   transition: opacity 0.6s var(--ease), transform 0.7s var(--ease);
 }
 .anim-ready .feat li.in { opacity: 1; transform: none; }
