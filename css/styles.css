@@ -477,6 +477,10 @@ html[data-pulse="on"] .fab__btn { animation: waPulse 2.6s infinite; }
 .reveal.d2 { transition-delay: 0.15s; }
 .reveal.d3 { transition-delay: 0.23s; }
 
+/* shead grid (2 col): translateY mai mic ca să nu dea overflow vizual în coloana alăturată */
+.anim-ready .shead .reveal,
+.anim-ready .shead .section-title.reveal { transform: translateY(14px); }
+
 /* ---- Imagini: scale + blur clear (efect cinematic) ---- */
 .anim-ready .media image-slot,
 .anim-ready .media img,
@@ -706,7 +710,7 @@ html.hero-ready .hero--cinematic .media__scrim {
   /* Services sticky-stack pe mobile — text compact sus, imagini se suprapun la scroll */
   .amen { padding-block: 0; }
   .amen__grid { grid-template-columns: 1fr; }
-  .amen__left { position: sticky; top: 0; z-index: 10; height: auto; background: var(--paper); padding: clamp(16px,4vw,24px) var(--gut); }
+  .amen__left { position: sticky; top: var(--nav-h, 68px); z-index: 10; height: auto; background: var(--paper); padding: clamp(16px,4vw,24px) var(--gut); }
   .amen__h { font-size: clamp(1.3rem,5vw,1.75rem); margin-bottom: 10px; }
   .amen__desc { display: none; }
   .amen__count { margin-top: 12px; }

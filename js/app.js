@@ -114,12 +114,16 @@
   setTimeout(function () { if (!ioFired) nodes.forEach(reveal); }, 1400);
 })();
 
-/* ---- Amenities: set --amen-top CSS var = height of sticky left panel (mobile) ---- */
+/* ---- Amenities: set --amen-top + --nav-h CSS vars (mobile sticky-stack offset) ---- */
 (function () {
   var left = document.querySelector(".amen__left");
+  var nav  = document.getElementById("nav");
   if (!left) return;
   function update() {
-    document.documentElement.style.setProperty("--amen-top", left.offsetHeight + "px");
+    var navH   = nav ? nav.offsetHeight : 68;
+    var mobile = window.innerWidth <= 860;
+    document.documentElement.style.setProperty("--nav-h",    navH + "px");
+    document.documentElement.style.setProperty("--amen-top", (mobile ? navH : 0) + left.offsetHeight + "px");
   }
   update();
   window.addEventListener("resize", update);
