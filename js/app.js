@@ -111,6 +111,17 @@
   setTimeout(function () { nodes.forEach(reveal); }, 6000);
 })();
 
+/* ---- Amenities: set --amen-top CSS var = height of sticky left panel (mobile) ---- */
+(function () {
+  var left = document.querySelector(".amen__left");
+  if (!left) return;
+  function update() {
+    document.documentElement.style.setProperty("--amen-top", left.offsetHeight + "px");
+  }
+  update();
+  window.addEventListener("resize", update);
+})();
+
 /* ---- Amenities sticky-stack: update pinned text + counter on scroll ---- */
 (function () {
   var section = document.querySelector(".amen");
@@ -140,7 +151,13 @@
   try {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) setActive(panels.indexOf(e.target));
+        var idx = panels.indexOf(e.target);
+        if (e.isIntersecting) {
+          setActive(idx);
+        } else if (idx > 0 && e.boundingClientRect.top > 0) {
+          // Panel exited downward — scrolling back up, activate previous
+          setActive(idx - 1);
+        }
       });
     }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
     panels.forEach(function (p) { io.observe(p); });

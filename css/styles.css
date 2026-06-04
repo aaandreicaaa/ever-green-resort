@@ -649,12 +649,14 @@ html.hero-ready .hero--cinematic .media__scrim {
   .loc { grid-template-columns: 1fr; }
   .foot__top { grid-template-columns: 1fr; }
   .foot__card { margin-top: clamp(90px,30vw,140px); }
-  /* sticky-stack falls back to simple stacked cards on mobile */
-  .amen { padding-block: clamp(56px, 12vw, 88px); }
+  /* Services sticky-stack pe mobile — text compact sus, imagini se suprapun la scroll */
+  .amen { padding-block: 0; }
   .amen__grid { grid-template-columns: 1fr; }
-  .amen__left { position: static; height: auto; padding: 0 var(--gut) clamp(28px,6vw,48px); }
-  .amen__count { margin-top: 28px; }
-  .amen__panel { position: relative; top: auto; height: clamp(440px, 82vw, 620px); aspect-ratio: auto; margin-bottom: 12px; }
+  .amen__left { position: sticky; top: 0; z-index: 10; height: auto; background: var(--paper); padding: clamp(16px,4vw,24px) var(--gut); }
+  .amen__h { font-size: clamp(1.3rem,5vw,1.75rem); margin-bottom: 10px; }
+  .amen__desc { display: none; }
+  .amen__count { margin-top: 12px; }
+  .amen__panel { position: sticky; top: var(--amen-top,150px); height: calc(100svh - var(--amen-top,150px)); margin-bottom: 0; }
   .amen__panel:last-child { margin-bottom: 0; }
 }
 @media (max-width: 560px) {
