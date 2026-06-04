@@ -73,8 +73,8 @@
   var root = document.documentElement;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // collect every animatable node
-  var nodes = [].slice.call(document.querySelectorAll(".reveal, .mask, .media:not(.hero__bg), .svc, .gal figure"));
+  // collect every animatable node (inclusiv feat li pentru stagger)
+  var nodes = [].slice.call(document.querySelectorAll(".reveal, .mask, .media:not(.hero__bg), .svc, .gal figure, .feat li"));
 
   if (reduce) { root.classList.add("anim-ready"); nodes.forEach(function (n) { n.classList.add("in"); }); return; }
 
@@ -87,16 +87,21 @@
     io = new IntersectionObserver(function (entries) {
       ioFired = true;
       entries.forEach(function (e) {
-        if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+        // Re-trigger la fiecare trecere: add .in la intrare, remove la ieșire
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+        } else {
+          e.target.classList.remove("in");
+        }
       });
-    }, { threshold: 0.14, rootMargin: "0px 0px -7% 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
     nodes.forEach(function (n) { io.observe(n); });
   } catch (err) {
     nodes.forEach(reveal);
     return;
   }
 
-  // Reveal anything already in view on load (e.g. hero) next frame.
+  // Reveal elementele deja vizibile la încărcare (ex. hero).
   requestAnimationFrame(function () {
     var vh = window.innerHeight || 800;
     nodes.forEach(function (n) {
@@ -105,10 +110,8 @@
     });
   });
 
-  // Safety net 1: if the observer never delivered a callback, reveal all.
+  // Safety net: dacă observer-ul nu s-a declanșat deloc (edge case).
   setTimeout(function () { if (!ioFired) nodes.forEach(reveal); }, 1400);
-  // Safety net 2: nothing should ever stay hidden.
-  setTimeout(function () { nodes.forEach(reveal); }, 6000);
 })();
 
 /* ---- Amenities: set --amen-top CSS var = height of sticky left panel (mobile) ---- */

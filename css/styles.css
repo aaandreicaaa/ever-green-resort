@@ -452,29 +452,78 @@ html[data-pulse="on"] .fab__btn { animation: waPulse 2.6s infinite; }
 }
 
 /* =========================================================================
-   SCROLL ANIMATIONS (Palmaria) — base state VISIBLE; .anim-ready (set by JS)
-   enables hidden start, observer adds .in to reveal. Fail-safe: no JS = visible.
+   SCROLL ANIMATIONS — re-trigger la fiecare trecere, nu doar prima oară.
+   .anim-ready (setat de JS) activează stările ascunse.
+   Observer adaugă .in la intrare și îl scoate la ieșire din viewport.
+   Fail-safe: fără JS = totul vizibil.
    ========================================================================= */
-.anim-ready .reveal { opacity: 0; transform: translateY(42px); transition: opacity 1s var(--ease), transform 1.05s var(--ease); }
-.anim-ready .reveal.in { opacity: 1; transform: none; }
-.reveal.d1 { transition-delay: 0.09s; }
-.reveal.d2 { transition-delay: 0.18s; }
-.reveal.d3 { transition-delay: 0.27s; }
 
-/* image scale-reveal: media scales 1.14 -> 1 when revealed */
+/* ---- Reveal de bază: fade + lift mai pronunțat + hint scale ---- */
+.anim-ready .reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.97);
+  transition: opacity 0.85s var(--ease), transform 0.95s var(--ease);
+}
+.anim-ready .reveal.in { opacity: 1; transform: none; }
+
+/* Section titles: mișcare mai amplă + easing elastic */
+.anim-ready .section-title.reveal {
+  transform: translateY(64px) scale(0.96);
+  transition: opacity 0.9s var(--ease-2), transform 1.05s var(--ease-2);
+}
+
+/* Delay stagger */
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+
+/* ---- Imagini: scale + blur clear (efect cinematic) ---- */
 .anim-ready .media image-slot,
 .anim-ready .media img,
 .anim-ready .svc__media,
-.anim-ready .gal__m { transform: scale(1.14); transition: transform 1.4s var(--ease); }
+.anim-ready .gal__m {
+  transform: scale(1.14);
+  filter: blur(6px);
+  transition: transform 1.4s var(--ease), filter 1.1s var(--ease);
+}
 .anim-ready .media.in image-slot,
 .anim-ready .media.in img,
 .anim-ready .svc.in .svc__media,
-.anim-ready .gal figure.in .gal__m { transform: scale(1); }
-/* keep hover scale working after reveal */
-.anim-ready .svc.in:hover .svc__media { transform: scale(1.06); }
-.anim-ready .gal figure.in:hover .gal__m { transform: scale(1.05); }
+.anim-ready .gal figure.in .gal__m {
+  transform: scale(1);
+  filter: blur(0);
+}
+/* hover rămâne activ după reveal */
+.anim-ready .svc.in:hover .svc__media  { transform: scale(1.06); filter: blur(0); }
+.anim-ready .gal figure.in:hover .gal__m { transform: scale(1.05); filter: blur(0); }
 
-/* headline mask reveal */
+/* ---- Galerie: fade + lift + scale, staggered ---- */
+.anim-ready .gal figure {
+  opacity: 0;
+  transform: translateY(52px) scale(0.93);
+  transition: opacity 0.8s var(--ease), transform 0.9s var(--ease);
+}
+.anim-ready .gal figure.in { opacity: 1; transform: none; }
+.anim-ready .gal figure:nth-child(2) { transition-delay: 0.08s; }
+.anim-ready .gal figure:nth-child(3) { transition-delay: 0.16s; }
+.anim-ready .gal figure:nth-child(4) { transition-delay: 0.24s; }
+.anim-ready .gal figure:nth-child(5) { transition-delay: 0.32s; }
+.anim-ready .gal figure:nth-child(6) { transition-delay: 0.40s; }
+
+/* ---- Facilități: slide din stânga, staggered ---- */
+.anim-ready .feat li {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.6s var(--ease), transform 0.7s var(--ease);
+}
+.anim-ready .feat li.in { opacity: 1; transform: none; }
+.anim-ready .feat li:nth-child(2) { transition-delay: 0.07s; }
+.anim-ready .feat li:nth-child(3) { transition-delay: 0.14s; }
+.anim-ready .feat li:nth-child(4) { transition-delay: 0.21s; }
+.anim-ready .feat li:nth-child(5) { transition-delay: 0.28s; }
+.anim-ready .feat li:nth-child(6) { transition-delay: 0.35s; }
+
+/* ---- Mask text reveal ---- */
 .mask { display: block; overflow: hidden; }
 .mask > span { display: block; }
 .anim-ready .mask > span { transform: translateY(112%); transition: transform 1.05s var(--ease-2); }
@@ -484,9 +533,14 @@ html[data-pulse="on"] .fab__btn { animation: waPulse 2.6s infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .anim-ready .reveal, .anim-ready .mask > span,
+  .anim-ready .reveal, .anim-ready .section-title.reveal,
+  .anim-ready .mask > span,
   .anim-ready .media image-slot, .anim-ready .media img,
-  .anim-ready .svc__media, .anim-ready .gal__m { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .anim-ready .svc__media, .anim-ready .gal__m,
+  .anim-ready .gal figure, .anim-ready .feat li {
+    opacity: 1 !important; transform: none !important;
+    transition: none !important; filter: blur(0) !important;
+  }
   .hero__scroll i { animation: none; }
   html[data-pulse="on"] .fab__btn { animation: none; }
 }
